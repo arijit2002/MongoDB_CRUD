@@ -4,7 +4,7 @@ module.exports.test =(req, res) => {
     res.send("working");
 };
 
-const createUser = (req, res) => {
+module.exports.createUser = (req, res) => {
     res.send("create user");
 };
 
