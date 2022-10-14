@@ -26,7 +26,6 @@ module.exports.getUserById = async (req, res) => {
 module.exports.deleteUserById = async (req, res) => {
     const id = req.body.id;
     const userPresent = await User.findByIdAndRemove(id);
-    if(userPresent!=null) {
-        res.send({"message":"user deleted"});
+    if(userPresent!=null) {res.send({"message":"user deleted"});
     }else res.send({"message":"user not present"});
 };
