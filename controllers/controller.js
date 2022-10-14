@@ -26,3 +26,11 @@ module.exports.deleteUserById = async (req, res) => {
     if(userPresent!=null) {res.send({"message":"user deleted"});}
     else res.send({"message":"user not present"});
 };
+
+module.exports.updateUserById = async (req, res) => {
+    const id = req.body.id;
+    if(User.findById(id)!=null) {
+        await User.findByIdAndUpdate(id, {$set:req.body});
+        res.send("User updated successfully");
+    }else{res.send("User not found");}
+};
