@@ -1,10 +1,9 @@
 const router = require('express').Router();
-const { test, createUser, getUsers, getUserById, deleteUserById } = require('../controllers/controller');
+const { createUser, getUsers, getUserById, deleteUserById } = require('../controllers/controller');
 
-router.get('/', test);
-router.post('/create', createUser);
-router.get('/getUsers', getUsers);
-router.get('/getUser', getUserById);
-router.delete('/deleteUser', deleteUserById);
+router.post('/createUser', createUser); //http://localhost:5000/user/createUser
+router.get('/getUsers', getUsers); //http://localhost:5000/user/getUsers
+router.get('/getUser', getUserById); //http://localhost:5000/user/getUser
+router.delete('/deleteUser', deleteUserById); //http://localhost:5000/user/deleteUser
 
 module.exports =router;
