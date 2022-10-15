@@ -21,8 +21,8 @@ module.exports.getUserById = async (req, res) => {
 };
 
 module.exports.getUserByEmail = async (req, res) => {
-    const id = req.body.email;
-    const userPresent = await User.find(email);
+    const email = req.body.email;
+    const userPresent = await User.find({email});
     if(userPresent != null) res.status(200).send(userPresent);
     else res.send({"message":"user not present"});
 };
