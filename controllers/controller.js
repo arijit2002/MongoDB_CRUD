@@ -2,8 +2,8 @@ const mongooose = require('mongoose');
 const User = require('../model/user');
 
 module.exports.createUser = async (req, res) => {
-    const { first_name, last_name, city } = req.body;
-    const newUser = await new User({first_name,last_name,city}).save();
+    const { email, first_name, last_name, city } = req.body;
+    const newUser = await new User({email,first_name,last_name,city}).save();
     res.status(201).send(newUser);
 };
 
