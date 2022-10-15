@@ -10,7 +10,7 @@ module.exports.createUser = async (req, res) => {
 module.exports.getAllUsers = async (req, res) => {
     const allUsers = await User.find();
     if(allUsers.length > 0) res.status(200).send(allUsers);
-    else res.status(404).send({"message":"empty database"});
+    else res.status(404).send({"message":"no users present"});
 };
 
 module.exports.getUserById = async (req, res) => {
