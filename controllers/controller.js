@@ -17,14 +17,14 @@ module.exports.getUserById = async (req, res) => {
     const id = req.body.id;
     const userPresent = await User.findById(id);
     if(userPresent != null) res.status(200).send(userPresent);
-    else res.send({"message":"user not present"});
+    else res.send({"message":"user with this id is not available"});
 };
 
 module.exports.getUserByEmail = async (req, res) => {
     const email = req.body.email;
     const userPresent = await User.find({email});
-    if(userPresent != null) res.status(200).send(userPresent);
-    else res.send({"message":"user not present"});
+    if(userPresent.length > 0) res.status(200).send(userPresent);
+    else res.send({"message":"user with this email is not available"});
 };
 
 module.exports.deleteAllUsers = async (req, res) => {
