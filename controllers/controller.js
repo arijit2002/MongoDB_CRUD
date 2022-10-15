@@ -16,7 +16,7 @@ module.exports.getUsers = async (req, res) => {
 module.exports.getUserById = async (req, res) => {
     const id = req.body.id;
     const userPresent = await User.findById(id);
-    if(userPresent!=null) {res.send(userPresent);}
+    if(userPresent!=null) res.status(200).send(userPresent);
     else res.send({"message":"user not present"});
 };
 
