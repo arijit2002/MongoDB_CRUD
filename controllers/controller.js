@@ -8,15 +8,16 @@ module.exports.createUser = async (req, res) => {
     res.status(201).send(newUser);
 };
 
-module.exports.getUsers = async (req, res) => {
+module.exports.getAllUsers = async (req, res) => {
     const allUsers = await User.find();
-    res.status(200).send(allUsers);
+    if(allUsers.length > 0) res.status(200).send(allUsers);
+    else res.status(404).send({"message":"empty database"});
 };
 
 module.exports.getUserById = async (req, res) => {
     const id = req.body.id;
     const userPresent = await User.findById(id);
-    if(userPresent!=null) res.status(200).send(userPresent);
+    if(userPresent != null) res.status(200).send(userPresent);
     else res.send({"message":"user not present"});
 };
 
