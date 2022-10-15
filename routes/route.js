@@ -4,7 +4,7 @@ const { createUser, getUsers, getUserById, deleteUserById, updateUserById } = re
 router.post('/createUser', createUser); //http://localhost:5000/user/createUser
 router.get('/getUsers', getUsers); //http://localhost:5000/user/getUsers
 router.get('/getUser', getUserById); //http://localhost:5000/user/getUser
-router.delete('/deleteUser', deleteUserById); //http://localhost:5000/user/deleteUser
+router.delete('/deleteUserById', deleteUserById); //http://localhost:5000/user/deleteUser
 router.patch('/updateUser', updateUserById); //http://localhost:5000/user/updateUser
 
 module.exports =router;
