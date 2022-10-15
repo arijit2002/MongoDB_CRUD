@@ -20,6 +20,13 @@ module.exports.getUserById = async (req, res) => {
     else res.send({"message":"user not present"});
 };
 
+module.exports.getUserByEmail = async (req, res) => {
+    const id = req.body.email;
+    const userPresent = await User.find(email);
+    if(userPresent != null) res.status(200).send(userPresent);
+    else res.send({"message":"user not present"});
+};
+
 module.exports.deleteAllUsers = async (req, res) => {
     const allUsers = await User.remove();
     res.status(200).send({"message":"All Users deleted"});
