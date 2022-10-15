@@ -10,7 +10,7 @@ module.exports.createUser = async (req, res) => {
 
 module.exports.getUsers = async (req, res) => {
     const allUsers = await User.find();
-    res.send(allUsers);
+    res.status(200).send(allUsers);
 };
 
 module.exports.getUserById = async (req, res) => {
