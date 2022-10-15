@@ -22,7 +22,7 @@ module.exports.getUserById = async (req, res) => {
 
 module.exports.deleteAllUsers = async (req, res) => {
     const allUsers = await User.remove();
-    res.status(200).send("All Users deleted");
+    res.status(200).send({"message":"All Users deleted"});
 };
 
 module.exports.deleteUserById = async (req, res) => {
@@ -36,6 +36,6 @@ module.exports.updateUserById = async (req, res) => {
     const id = req.body.id;
     if(User.findById(id)!=null) {
         await User.findByIdAndUpdate(id, {$set:req.body});
-        res.send("User updated successfully");
-    }else{res.send("User not found");}
+        res.send({"message":"User updated successfully"});
+    }else res.send({"message":"User not found"});
 };
