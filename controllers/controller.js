@@ -1,8 +1,6 @@
-const mongooose = require('mongoose');
 const User = require('../model/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const { response } = require('express');
 require('dotenv').config();
 
 module.exports.login = async (req, res) => {
