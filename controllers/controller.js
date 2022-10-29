@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 
 module.exports.login = async (req, res) => {
     const { email, password } = req.body;
-    if(!(email && password)){res.status(400).redirect('/login');};
+    if(!(email && password)) res.status(400).redirect('/login');
 };
 
 module.exports.createUser = async (req, res) => {
