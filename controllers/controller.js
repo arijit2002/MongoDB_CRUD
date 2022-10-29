@@ -2,6 +2,11 @@ const mongooose = require('mongoose');
 const User = require('../model/user');
 const bcrypt = require('bcrypt');
 
+module.exports.login = async (req, res) => {
+    const { email, password } = req.body;
+    if(!(email && password)){res.status(400).redirect('/');};
+};
+
 module.exports.createUser = async (req, res) => {
     const { email, password, first_name, last_name, city } = req.body;
     if(await User.findOne({email})) res.status(404).send({"message": "cannot create user with same email"});
