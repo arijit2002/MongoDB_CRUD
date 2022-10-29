@@ -5,6 +5,12 @@ const bcrypt = require('bcrypt');
 module.exports.login = async (req, res) => {
     const { email, password } = req.body;
     if(!(email && password)) res.status(400).redirect('/login');
+    else{
+        const userPresent = await User.findOne({email});
+        if(userPresent && await(bcrypt.compare(password,userPresent.password))){
+            
+        }
+    }
 };
 
 module.exports.createUser = async (req, res) => {
