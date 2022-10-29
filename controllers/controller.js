@@ -19,8 +19,7 @@ module.exports.login = async (req, res) => {
                 }
             )
             res.status(200).send({token:token});
-        }
-        response.status(400).redirect('/user/login');
+        }else res.status(400).redirect('/user/login');
     }
 };
 
