@@ -2,7 +2,7 @@ const mongooose = require('mongoose');
 const User = require('../model/user');
 
 module.exports.createUser = async (req, res) => {
-    const { email, first_name, last_name, city } = req.body;
+    const { email, password, first_name, last_name, city } = req.body;
     if(await User.findOne({email})) res.status(404).send({"message": "cannot create user with same email"});
     else {
         const newUser = await new User({email,first_name,last_name,city}).save();
