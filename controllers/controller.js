@@ -2,6 +2,8 @@ const mongooose = require('mongoose');
 const User = require('../model/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const { response } = require('express');
+require('dotenv').config();
 
 module.exports.login = async (req, res) => {
     const { email, password } = req.body;
@@ -9,8 +11,16 @@ module.exports.login = async (req, res) => {
     else{
         const userPresent = await User.findOne({email});
         if(userPresent && await(bcrypt.compare(password,userPresent.password))){
-
+            const token = jwt.sign(
+                {user_id: userPresent.id,email},
+                process.env.TOKEN_KEY,
+                {
+                    expiresIn: "2h",
+                }
+            )
+            res.status(200).send({token:token});
         }
+        response.status(400).redirect('/user/login');
     }
 };
 
